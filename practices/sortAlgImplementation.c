@@ -4,6 +4,8 @@
 #include <stdbool.h>
 
 #define MAX_ITEMS 1000
+#define thershold 5
+#define numericRadix 10
 
 typedef int Item;
 
@@ -23,7 +25,6 @@ void medianOfThreeQuickSort(Item items[], int lo, int hi);
 void randomisedQuickSort(Item items[], int lo, int hi);
 
 void insertionQuickSortV1(Item items[], int lo, int hi);
-void insertionQuickSortV2(Item items[], int lo, int hi);
 
 void radixSort(Item items[], int lo, int hi);
 
@@ -68,8 +69,7 @@ void printMenu(void) {
     printf(" 7. Median-of-three Quick Sort\n");
     printf(" 8. Randomised Quick Sort\n");
     printf(" 9. Insertion-Quick-Sort Version 1\n");
-    printf("10. Insertion-Quick-Sort Version 2\n");
-    printf("11. Radix Sort\n");
+    printf("10. Radix Sort\n");
     printf("Choice: ");
 }
 
@@ -106,9 +106,6 @@ void runSort(int choice, Item items[], int n) {
             insertionQuickSortV1(items, lo, hi);
             break;
         case 10:
-            insertionQuickSortV2(items, lo, hi);
-            break;
-        case 11:
             radixSort(items, lo, hi);
             break;
         default:
@@ -219,6 +216,23 @@ void medianOfThree(Item items[], int lo, int hi) {
     // mid => sml => lar
 }
 
+int randInt(int lo, int hi) {
+    int randI = rand() % (hi - lo + 1) + lo; // Assign random number
+    return randI;
+}
+
+int findMax(Item items[], int lo, int hi) {
+    int maxValue = items[lo];
+
+    for (int i = lo + 1; i <= hi; i++) {
+        if (items[i] > maxValue) {
+            maxValue = items[i];
+        }
+    }
+
+    return maxValue;
+}
+
 /* =========================================================
    Your sorting algorithm implementations
    ========================================================= */
@@ -298,18 +312,57 @@ void medianOfThreeQuickSort(Item items[], int lo, int hi) {
 }
 
 void randomisedQuickSort(Item items[], int lo, int hi) {
+    if (lo >= hi) return;
+    
+    swap(items, lo, randInt(lo, hi));
+    int pivotIndex = partition(items, lo, hi);
 
+    randomisedQuickSort(items, lo, pivotIndex - 1);
+    randomisedQuickSort(items, pivotIndex + 1, hi);
 }
 
 void insertionQuickSortV1(Item items[], int lo, int hi) {
+    if ((hi - lo) <= thershold) { // thershold = 5
+        insertionSort(items, lo, hi);
+        return;
+    } 
 
-}
-
-void insertionQuickSortV2(Item items[], int lo, int hi) {
-
+    medianOfThree(items, lo, hi);    
+    int pivotIndex = partition(items, lo, hi);
+    insertionQuickSortV1(items, lo, pivotIndex - 1);
+    insertionQuickSortV1(items, pivotIndex + 1, hi);
 }
 
 void radixSort(Item items[], int lo, int hi) {
+    if (lo >= hi) {
+        return;
+    }
 
+    int maxValue = findMax(items, lo, hi);
+
+    Item buckets[10][MAX_ITEMS];
+    int bucketSizes[10];
+
+    for (int place = 1; maxValue / place > 0; place *= 10) {
+        for (int digit = 0; digit < 10; digit++) {
+            bucketSizes[digit] = 0;
+        }
+
+        for (int i = lo; i <= hi; i++) {
+            int digit = (items[i] / place) % 10;
+
+            buckets[digit][bucketSizes[digit]] = items[i];
+            bucketSizes[digit]++;
+        }
+
+        int index = lo;
+
+        for (int digit = 0; digit < 10; digit++) {
+            for (int j = 0; j < bucketSizes[digit]; j++) {
+                items[index] = buckets[digit][j];
+                index++;
+            }
+        }
+    }
 }
 
