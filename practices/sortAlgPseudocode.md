@@ -95,28 +95,6 @@ output: integer l
         swap(items, lo, l)
         return l
 
-
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
-int partition(Item items[], int lo, int hi) {
-    int pivot = items[lo];
-    int l = lo + 1, r = hi;
-
-    while(l != r) {
-        while (items[l] <= pivot) l++;
-        while (items[r] >= pivot) r--;
-        swap(items, l, r);
-        l++, r--;
-    }
-
-    if (pivot < items[l]) l--;
-    swap(items, lo, l);
-    return l;
-}
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
-
-
 naiveQuickSort(items[], lo, hi)
 input: array item, indices lo and hi  
 output: void
@@ -137,3 +115,61 @@ output: void
 
         medianOfThreeQuickSort(items, lo, pivotIndex - 1)
         medianOfThreeQuickSort(items, pivotIndex + 1, hi)
+
+medianOfThree(items, lo, hi)
+input: array item, indices lo and hi  
+output: void
+mid = (lo + hi) / 2
+
+if items[mid] > items[lo] swap(items, lo, mid)
+if items[lo] > items[hi] swap(items, lo, hi)
+if items[mid] > items[lo] swap(items, lo, mid)
+// mid => min => max
+
+
+## Randomised Quick Sort
+randomisedQuickSort(items, lo, hi)
+input: array item, indices lo and hi  
+output: void
+        if lo >= hi, return
+        randomPivot(items, lo, hi)
+        pivotIndex = partition(items, lo, hi)
+
+        randomisedQuickSort(items, lo, pivotIndex - 1)
+        randomisedQuickSort(items, pivotIndex + 1, hi)
+
+randomPivot(items, lo, hi)
+input: array item, indices lo and hi  
+output: void
+
+int rand = rand() % (hi - lo +1) + lo
+swap(items, lo, rand)
+
+## Insertion Quick Sort
+insertionQuickSort(items, lo, hi)
+input: array item, indices lo and hi  
+output: void
+        if (hi - lo) < thershold:
+                insertionSort(items, lo, hi)
+                return
+        medianOfThree(items, lo, hi)
+        pivotIndex = partition(items, lo, hi)
+
+        insertionQuickSort(items, lo, pivotIndex - 1)
+        insertionQuickSort(items, pivotIndex + 1, hi)
+
+
+## Radix sort (numeric)
+radixSort(items, lo, hi)
+input: array item, indices lo and hi  
+output: void
+
+        initialise bucket with correspond radix
+        for each key of the element:
+        empty bucket
+                for each key in items:
+                        append key into corresponded bucket[i]
+                clear items[]
+                for each key in bucket:
+                append bucket[i] into items[]
+
