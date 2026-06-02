@@ -68,3 +68,6 @@ Both insertion and deletion is only O(1)
 
 - Insert and deletion
         Both O(n) => both needs to scan every element first, but insertion and deletion only needs O(1) times
+
+
+[OPERATION TIME COMPLEXITY SUMMARY TABLE](./img/ADTSumTable.png)
