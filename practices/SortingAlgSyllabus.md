@@ -10,7 +10,7 @@
 - Adaptability -- ability of performs much fast with nearly sorted/sorted (Best/Average case) data
 - In-place -- require no extra/temporary spaces(e.g. arr, linked list) during sorting
 
-
+Q2
 ## Selection analysis
 Property
 - Worst/Average/Best case: O(n^2) 
@@ -849,5 +849,27 @@ Sorted
 Q5
 Done
 
+Q6
+Done
 
+Q7
+[Check pseudocode](./sortAlgPseudocode.md)
 
+Q8
+[Check src](./sortAlgImplementation.c)
+
+Q9
+Done
+
+Q10
+Done
+
+Q11
+Done
+
+Q13
+## Space complexity
+- Selection, bubble, insertion => O(1)
+- Merge (include bottom-up) => O(n)
+- Quick (any) sort => O(logn) on best and average, worst on O(n)
+- Radix sort => O(R + n) 
