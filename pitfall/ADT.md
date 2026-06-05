@@ -1,4 +1,4 @@
-# ADT Pitfalls and How to Avoid Them
+# ADT Pitfalls
 
 ## 1. Queue ADT Abstraction Does Not Prevent Storing Your Own Data Type
 

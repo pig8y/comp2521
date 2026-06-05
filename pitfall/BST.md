@@ -1,4 +1,4 @@
-# BST Pitfalls and How to Avoid Them
+# BST Pitfalls
 
 ## 1. Do Not Default to Recursion When a BST Operation Uses Two Pointers
 

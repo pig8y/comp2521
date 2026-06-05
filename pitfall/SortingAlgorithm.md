@@ -1,4 +1,4 @@
-# Sorting Algorithm Pitfalls and How to Avoid Them
+# Sorting Algorithm Pitfalls
 
 ## 1. Stable Sorting in Multi-Key Sorting
 
