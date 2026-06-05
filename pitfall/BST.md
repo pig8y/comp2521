@@ -36,3 +36,28 @@ Choose recursion or iteration according to the task, not simply because the data
 
 **Source:**  
 Personal Reflection
+
+## 4. AVL Rotation
+
+**Pitfall:**  
+It is easy to think that because AVL insertion checks upward from the newly inserted node, so that when doing rotation to rebalance, also starts from the new inserted node
+
+**Answer / How to Avoid It:**  
+AVL insertion does check upward from the newly inserted node, but the rotation case is determined from the first unbalanced node, not from the newly inserted node.
+
+LR case:
+      z
+     /
+    y
+     \
+      x
+
+Unbalanced point: z
+1. Left rotate at y
+2. Right rotate at z
+
+rotation starts from the first unbalanced node z,
+and in LR / RL, the first rotation is performed at y, the second step from z.
+
+**Source:**  
+Week 5 Quiz Q6
