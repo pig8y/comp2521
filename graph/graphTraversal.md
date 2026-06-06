@@ -259,3 +259,219 @@ Output: return true if the path exist and false otherwise
                                 return true
         freeStack(s)
         return false
+
+
+
+
+
+
+# Practice 
+[graph image](../img/Undirected-unweightedGraph.png)
+Trace the execution of the traversal algorithms, and show the state of the visited and pred arrays and the Queue (BFS) or Stack (DFS) at the end of each iteration, for each of the following function calls:
+
+bfs(g, 0);
+dfs(g, 0);
+
+
+There're 8 vertices, so visited and pred arr will have the size of 8
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      0       0       0       0       0       0       0       0
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       -       -       -       -       -       -       -
+
+
+**bfs(g, 0)**
+# Frist iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       1       0       0       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       0       -       -       0       0       0
+
+Queue: *0* 1 2 5 6 7 
+
+# Second iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       1       0       0       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       0       -       -       0       0       0
+
+Queue: *0* *1* 2 5 6 7
+
+# Third iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       1       0       0       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       0       -       -       0       0       0
+
+Queue: *0* *1* *2* 5 6 7
+
+# Fourth iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       1       1       1       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       0       5       5       0       0       0
+
+Queue: *0* *1* *2* *5* 6 7 3 4
+
+# Fifth iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       1       1       1       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       0       5       5       0       0       0
+
+Queue: *0* *1* *2* *5* *6* 7 3 4 
+
+The rest of itertaion will not changed anything to any array, it will stopped when the queue is empty
+
+**dfs(g, 0);**
+# First iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       0       0       0       0       0
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       -       -       -       -       -
+
+Stack: 0 1
+
+# Second iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       0       0       0       0       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       -       -       -       -       1
+
+Stack: 0 1 7
+
+# Third iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       0       1       0       0       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       -       7       -       -       1
+
+Stack: 0 1 7 4
+
+# Fourth iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       1       1       0       0       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       4       7       -       -       1
+
+Stack: 0 1 7 4 3
+
+# Fifth iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       1       1       1       0       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       4       7       3       -       1
+
+Stack: 0 1 7 4 3 5
+
+# Sixth iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       1       1       1       0       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       4       7       3       -       1
+
+Stack: 0 1 7 4 3 5
+
+# RETURN - Seventh iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       1       1       1       0       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       4       7       3       -       1
+
+Stack: 0 1 7 4 3 *5*
+
+# RETURN - Eighth iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       1       1       1       0       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       4       7       3       -       1
+
+Stack: 0 1 7 4 *3* *5*
+
+# Nineth iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       1       1       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       4       7       3       4       1
+
+Stack: 0 1 7 4 *3* *5* 6
+
+# Tenth iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       1       1       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       4       7       3       4       1
+
+Stack: 0 1 7 4 *3* *5* *6*
+
+
+# Return - Eleven iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       1       1       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       4       7       3       4       1
+
+Stack: 0 1 7 *4* *3* *5* *6*
+
+# Return - Twelve iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       1       1       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       4       7       3       4       1
+
+Stack: 0 1 *7* *4* *3* *5* *6*
+
+# Return - Thirteen iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       0       1       1       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       -       4       7       3       4       1
+
+Stack: 0 *1* *7* *4* *3* *5* *6*
+
+# Fourteen iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       1       1       1       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       0       4       7       3       4       1
+
+Stack: 0 *1* *7* *4* *3* *5* *6* 2
+
+# Return - Fifteen iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       1       1       1       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       0       4       7       3       4       1
+
+Stack: 0 *1* *7* *4* *3* *5* *6* *2*
+
+# Return - Sixteen iteration
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+visited[]:      1       1       1       1       1       1       1       1
+
+               [0]     [1]     [2]     [3]     [4]     [5]     [6]     [7]
+predArr[]:      -       0       0       4       7       3       4       1
+
+Stack: *0* *1* *7* *4* *3* *5* *6* *2*
+
