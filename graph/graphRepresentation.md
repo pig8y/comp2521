@@ -38,8 +38,9 @@
   [check this](./nodenode*Andnode**.md)
 
 **Pros and cons**
-- Space-efficient, O(V+E) memory usage
+- Space-efficient, O(V+E) memory usage, very good at traversal
 - But cost much on insertion and deletion, O(V)(matters less for sparse graph)
+- And Searching is worst than matrix (edges existence checking) 
 
 
 
@@ -64,7 +65,9 @@
         }
 **Pros and cons**
 - Very space-efficient when E < V
-- Inefficient on insertion and deletion O(E)
+- Make operations on EVERY edges
+- Inefficient on insertion, deletion O(E), checking existence of edges O(E), traversal O(VE)
+
 
 
 
