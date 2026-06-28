@@ -23,3 +23,23 @@ Just remember, BFS once findout the neighbour is not visited, it marks it visite
 
 **Source:**  
 Week 7 Task 2 - DFS Maze Solver
+
+## 4.   Hamiltonian and Euler
+
+**Pitfall:**
+If a graph has Hamiltonian path => connected since each vertex is connected
+If a graph has Euler path => doesn't mean it is connected, maybe there's a vertex does not have edge
+
+**Source:**  
+
+## 5.   Djikstra alogirthm
+
+因为djikstra是找从src到任意的的shortest path，所以只要是能符合*从src开始*，是在这条路上的条件，就可以说这条shortest path中间的任意两点之间的shortest path也是他们两个点之间shortest path
+
+**Source:**
+Week 8 Quiz 7 Q5
+
+## 6.   Good pratice
+
+**Source:**
+Week 8 Quiz 7 Q8
