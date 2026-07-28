@@ -17,6 +17,7 @@
         - Insert: O(n)
         - Lookup: O(logn)
         - Delete: O(n)
+        You did can applybinary search to do insertion, but in worst case, still requires to shift n elements
 3. Balanced bst
         - Insert: O(logn)
         - Lookup: O(logn)

@@ -61,3 +61,16 @@ and in LR / RL, the first rotation is performed at y, the second step from z.
 
 **Source:**  
 Week 5 Quiz Q6
+
+## 5. AVL index
+
+**Pitfall:**
+Remember to distinguish the difference between value and index when saying paritioned on something (e.g. partitioned on index 5 (NOT value 5))
+
+**Source:**
+Week 5 Quiz Q3
+
+## 6. AVL Rotation2.0
+
+**Pitfall:**
+When asking what is the sequence of rotation will be performed after deletion in LR/RL case, it is not talking about always rotate at the root, but the two adjaceny node, which means if LR case, say rotate left, then right; if RL case, say rotate right, then left

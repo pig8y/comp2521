@@ -22,7 +22,8 @@ edges           n
                 +-------------+         +-------------+         +-------------+
 
 - In adjacency list, each vertex has its own linked list, storing the info about which node 
-  is connected with it, BUT, we have multiple nodes in one grap, which means we needs multiple linked list with multiple pointers point to them, to store their info
+  is connected with it, BUT, we have multiple nodes in one group, which means we needs multiple 
+  linked list with multiple pointers point to them, to store their info
 
 edges[0] -----> 1 -----> 3 -----> NULL
 edges[1] -----> 0 -----> 2 -----> NULL
